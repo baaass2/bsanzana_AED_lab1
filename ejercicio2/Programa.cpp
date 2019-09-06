@@ -12,10 +12,13 @@ int main(){
     int mayus=0;
     int minus=0;
     
-    char str[100];
+    string texto;    
+    char* str;
 
-	printf( "Introduzca su texto (100 caracteres máximo): " );
-	cin.getline(str,100);
+    printf( "Introduzca su texto : " );
+    getline(cin,texto);
+    
+    str = (char *)texto.c_str();
 
     AnalizarString s = AnalizarString();
     mayus = s.get_isupper(str);
