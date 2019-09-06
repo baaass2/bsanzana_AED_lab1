@@ -13,6 +13,7 @@ class Cliente {
         bool morosidad = false;
 
     public:
+        Cliente();
         Cliente (string nombre, string telefono, int saldo, bool morosidad);
       
         string get_nombre();

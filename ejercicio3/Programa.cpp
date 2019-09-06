@@ -3,43 +3,42 @@
 #include <cctype>
 #include <cstring>
 #include "Cliente.h"
-#include "Base_deDatos.h"
+
 
 using namespace std;
 
-void imprimir_datos(Base_deDatos b){
+void imprimir_datos(Cliente clientes[], int N){
 
-    list<Cliente>cliente = b.get_cliente();
-
-	for (Cliente c : cliente){
+    for (int i=0; i<N; i++){
 
         cout << "---------------------" << endl;
         
-        if( c.get_morosidad() == true ){
-            cout << "Nombre: " << c.get_nombre() << endl;
-            cout << "Telefono: " << c.get_telefono() << endl;
-            cout << "Saldo: " << c.get_saldo() << endl;
+        if( clientes[i].get_morosidad() == true ){
+            cout << "Nombre: " << clientes[i].get_nombre() << endl;
+            cout << "Telefono: " << clientes[i].get_telefono() << endl;
+            cout << "Saldo: " << clientes[i].get_saldo() << endl;
             cout << "CLIENTE MOROSO "<< endl;
         }
         
-        else if( c.get_morosidad() == false ){
-            cout << "Nombre: " << c.get_nombre() << endl;
-            cout << "Telefono: " << c.get_telefono() << endl;
-            cout << "Saldo: " << c.get_saldo() << endl;
+        else if( clientes[i].get_morosidad() == false ){
+            cout << "Nombre: " << clientes[i].get_nombre() << endl;
+            cout << "Telefono: " << clientes[i].get_telefono() << endl;
+            cout << "Saldo: " << clientes[i].get_saldo() << endl;
             cout << "CLIENTE NO MOROSO "<< endl;
         }
         cout << "---------------------" << endl;
     }
 
+
 }
 
+
 int main()  {
-
+    
     int N;
-
-    Base_deDatos b = Base_deDatos();
-
+    
     cout <<"Cantidad de Clientes a ingresar : "; cin>>N;
+    Cliente *clientes = new Cliente[N];
 
     for(int i=0; i<N; i++) {
         string nombre = "\0";
@@ -60,10 +59,9 @@ int main()  {
         }
 				
 		Cliente c = Cliente(nombre, telefono, saldo, morosidad);
-        b.add_Cliente(c);
+        clientes[i] = c;
 
     }
-    
-    imprimir_datos(b);
-    
+    imprimir_datos(clientes, N);
+
 }

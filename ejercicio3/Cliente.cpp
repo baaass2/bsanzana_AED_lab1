@@ -6,6 +6,11 @@
 
 using namespace std;
 
+Cliente::Cliente(){
+
+
+}
+
 
 Cliente::Cliente(string nombre, string telefono, int saldo, bool morosidad){
     this->nombre = nombre;
